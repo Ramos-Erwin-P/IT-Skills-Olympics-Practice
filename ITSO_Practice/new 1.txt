@@ -1,0 +1,34 @@
+Location: University of Makati
+Date: November 4, 2026
+Time: 6am to 7pm
+Categories:
+	Android App Dev't
+	Cybersec
+	DB Programming
+	Digital Electroonics
+	ESports
+	Java Programming
+	Linux Administration
+	Networking
+	Python Programming
+	Quiz Bee
+	Web Design
+	
+Schools joined (Includes Previous):
+	University of Makati (Host)
+	Arellano University
+	Laguna University
+	Technological Institute of the Philippines
+	FEU Institute of Technology
+	PUP
+	DLSU-D
+	Malayan Colleges Laguna
+	NU
+	Technological University of the Philippines
+	Pamantasan ng Lungsod ng Maynila
+	Pamantasan ng Lungsodng Venezuela
+	Taguig City University
+	Lyceum of the Philippines University
+	Don Bosco Technical Colleges
+	
+	
