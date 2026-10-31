@@ -1,5 +1,5 @@
 /* Currently working on responding to resizing */
-
+/* Replace hard-coded sizing with clamp and other relative sizing methods */
 * {
 	box-sizing: border-box;
 	color: white;
