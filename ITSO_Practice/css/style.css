@@ -1,14 +1,18 @@
-/* Currently working on responding to resizing */
-/* Replace hard-coded sizing with clamp and other relative sizing methods */
+/* Improved Response to resizes, might still have redundant/conflicting code */
+
 * {
 	box-sizing: border-box;
-	color: white;
 }
 
 body {
 	margin: 0;
 	background: linear-gradient(120deg,rgb(0,20,80), rgb(0,60,170), rgb(40,150,230));
 	font-family: "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+	color: white;
+}
+
+img, video {
+	max-width: 100%;
 }
 
 
@@ -22,7 +26,7 @@ body {
 	justify-content: space-between;
 	color: white;
 	padding: 10px;
-	z-index:1000;
+	z-index: 1000;
 	background: linear-gradient(120deg,rgb(0,20,80), rgb(0,60,170), rgb(40,150,230));
 }
 
@@ -89,10 +93,6 @@ body {
 	position: relative; 
 	z-index: 2;
 	color: white;
-}
-
-.hero-title,
-.hero-desc {
 	margin: 20px;
 }
 
@@ -124,6 +124,7 @@ body {
 	font-size: 22px;
 	text-decoration: none;
 	background: rgba(255,255,255,0);
+	color: white;
 
 }
 
@@ -132,6 +133,10 @@ body {
 .glass-card-right:hover {
 	background: rgba(255,255,255,0.1);
 	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(12px);
+	transition:
+	background 0.3s ease;
+		
 }
 .glass-card-mid {
 	display: flex;
@@ -160,9 +165,13 @@ body {
 #about-sec {
 	padding: 20px;
 	background: white;
-	margin: 50px;
+	margin: clamp(15px, 5vw, 50px);
 	border-radius: 30px;
-	min-height: 1000px;
+	min-height: auto;
+}
+
+.welcome-banner {
+	overflow: hidden;
 }
 
 .welcome-banner h3 {
@@ -170,11 +179,8 @@ body {
 	letter-spacing: 6px;
 	padding-bottom: 10px;
 	text-align: center;
+	white-space: nowrap;
 	
-}
-
-.divider {
-	transform: scale(1.022)
 }
 
 .about-title {
@@ -187,9 +193,9 @@ body {
 
 .about-title h1{
 	color: black;
-	font-size: 120px;
+	font-size: clamp(2.5rem, 9vw, 120px);
 	text-transform: uppercase;
-	letter-spacing: 10px;
+	letter-spacing: clamp(2px, 1vw, 10px);
 	margin: 0px;
 	margin-top: 50px;
 }
@@ -206,13 +212,135 @@ body {
 	justify-content: center;
 	align-content: center;
 	text-align: justify;
-	margin-left: 100px;
+	margin-left: clamp(20px, 5vw, 100px);
 	padding-right: 50px;
-	font-size: 20px;
+	font-size: clamp(1rem, 1.5vw, 20px);
 }
 
 .about-vid {
 	width: 50%;
 	border-radius: 20px;
-	margin-right: 100px;
+	margin-right: clamp(20px, 5vw, 100px);
 }
+
+.highlights {
+	margin: clamp(15px, 3vw, 50px);
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.hl-header1 {
+	padding-left: clamp(0px, 15vw, 500px);
+	font-size: clamp(2rem, 9vw, 120px);
+	letter-spacing: 5px;
+	font-style: italic;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.lower-hl-texts {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	padding-right: 100px;
+	gap: 20px 40px;
+}
+
+.hl-desc {
+	margin-top: 0px;
+	font-size: 20px;
+	text-align: justify;
+	flex: 1 1 320px;
+	
+}
+
+.hl-header2 {
+	display: block;
+	text-transform: uppercase;
+	font-style: italic;
+	font-size: clamp(2rem, 9vw, 120px);
+	letter-spacing: clamp(1px, 0.5vw, 5px);
+	margin: 0;
+	flex: 0 0 auto;
+	white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+	
+	html::-webkit-scrollbar {
+		display: none;
+	}
+	.top-header {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.nav-list {
+		gap: 20px;
+		margin: 10px;
+		font-size: 18px;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 0;
+	}
+	
+		.hero-title {
+		white-space: nowrap;
+		margin-left: 20px;
+	}
+	
+	.hero-desc {
+		width: auto;
+		margin-left: 20px;
+	}
+	
+	.glass {
+		flex-direction: column;
+		margin:0px;
+		margin-top: 50px;
+		gap: 15px;
+		align-items: center;
+		
+	}
+	
+	.glass-card-mid,
+	.glass-card-left,
+	.glass-card-right {
+		margin: 0;
+		display: flex;
+		width: 75%;
+		padding-left: 20px;
+		border-radius: 15px;
+	}
+	
+	.about-content {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.about-desc {
+		margin: 0;
+		padding: 0 10px;
+	}
+
+	.about-vid {
+		width: 100%;
+		margin: 0;
+	}
+		.highlights {
+		margin: 20px;
+		padding: 10px;
+	}
+
+	.hl-header1 {
+		padding-left: 0;
+	}
+
+	.lower-hl-texts {
+		flex-direction: column;
+		padding-right: 0;
+	}
+
+	.hl-desc {
+		margin-right: 0;
+	}
