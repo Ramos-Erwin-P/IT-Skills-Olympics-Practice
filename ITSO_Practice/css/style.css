@@ -1,5 +1,3 @@
-/* Improved Response to resizes, might still have redundant/conflicting code */
-
 * {
 	box-sizing: border-box;
 }
@@ -224,15 +222,18 @@ img, video {
 }
 
 .highlights {
+	max-width: 1880px;    
+	margin-inline: auto;
 	margin: clamp(15px, 3vw, 50px);
 	border-radius: 20px;
-	padding: 20px;
+	padding: clamp(10px, 2vw, 20px);
+
 }
 
 .hl-header1 {
-	padding-left: clamp(0px, 15vw, 500px);
-	font-size: clamp(2rem, 9vw, 120px);
-	letter-spacing: 5px;
+	padding-left: clamp(0px, 15vw, 200px);
+	font-size: clamp(2rem, 9vw, 200px);
+	letter-spacing: clamp(1px, 0.4vw, 5px);
 	font-style: italic;
 	text-transform: uppercase;
 	margin: 0;
@@ -240,30 +241,76 @@ img, video {
 
 .lower-hl-texts {
 	display: flex;
-	justify-content: space-between;
 	flex-wrap: wrap;
 	align-items: flex-start;
-	padding-right: 100px;
+	justify-content: space-between;
 	gap: 20px 40px;
+	padding-right: clamp(0px, 5vw, 100px);
 }
 
 .hl-desc {
 	margin-top: 0px;
-	font-size: 20px;
+	font-size: clamp(0.95rem, 1.5vw, 32px);
 	text-align: justify;
 	flex: 1 1 320px;
-	
+	max-width: 900px;
 }
 
 .hl-header2 {
 	display: block;
 	text-transform: uppercase;
 	font-style: italic;
-	font-size: clamp(2rem, 9vw, 120px);
+	font-size: clamp(2rem, 9vw, 200px);
 	letter-spacing: clamp(1px, 0.5vw, 5px);
 	margin: 0;
 	flex: 0 0 auto;
 	white-space: nowrap;
+}
+
+.competitions {
+	max-width: 1500px;
+	margin: clamp(15px, 3vw, 50px) auto;
+	padding: clamp(10px, 2vw, 20px);
+}
+
+.competitions h1 {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: clamp(2rem, 6vw, 80px);
+	letter-spacing: clamp(1px, 0.4vw, 5px);
+	margin: 0 0 30px;
+}
+
+.comp-grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);   /* 6 tracks, each card spans 2 = 3 per row */
+	gap: 20px;
+}
+
+.comp-card {
+	grid-column: span 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	min-height: 140px;
+	padding: 20px;
+	font-size: clamp(1rem, 2vw, 26px);
+	font-weight: bold;
+	outline: 1px solid white;
+	border-radius: 15px;
+	background: rgba(255,255,255,0.05);
+	transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.comp-card:hover {
+	background: rgba(255,255,255,0.15);
+	transform: translateY(-4px);
+}
+
+/* centers the last two cards: the 10th starts at track 2, the 11th follows it */
+.comp-card:nth-child(10) {
+	grid-column: 2 / span 2;
 }
 
 @media (max-width: 900px) {
@@ -344,3 +391,5 @@ img, video {
 	.hl-desc {
 		margin-right: 0;
 	}
+	
+}
